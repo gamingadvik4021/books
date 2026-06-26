@@ -4,78 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Book Customizer</title>
-    <!-- Tailwind CSS for clean, modern styling -->
     <script src="https://tailwindcss.com"></script>
-    <!-- PDF.js for reading PDF files -->
     <script src="https://cloudflare.com"></script>
-    <!-- Fabric.js for the customizable drag-and-drop tools -->
     <script src="https://cloudflare.com"></script>
-    <!-- jsPDF for downloading the finished book -->
     <script src="https://cloudflare.com"></script>
 </head>
 <body class="bg-gray-900 text-white h-screen flex flex-col overflow-hidden">
-
-    <!-- Top Header -->
     <header class="bg-gray-800 p-4 shadow-md flex justify-between items-center border-b border-gray-700">
         <h1 class="text-xl font-bold tracking-wide text-indigo-400">📚 Custom Book Studio</h1>
         <div class="flex gap-4">
             <input type="file" id="pdf-upload" accept=".pdf" class="hidden" />
-            <label for="pdf-upload" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2 px-4 rounded cursor-pointer transition">
-                Upload PDF Book
-            </label>
-            <button id="download-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2 px-4 rounded transition hidden">
-                Download Finished Book
-            </button>
+            <label for="pdf-upload" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2 px-4 rounded cursor-pointer transition">Upload PDF Book</label>
+            <button id="download-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2 px-4 rounded transition hidden">Download Finished Book</button>
         </div>
     </header>
-
-    <!-- Main Workspace -->
     <div class="flex flex-1 overflow-hidden">
-        
-        <!-- Left Sidebar Toolbar (Hidden until upload) -->
         <aside id="toolbar" class="w-64 bg-gray-800 p-4 border-r border-gray-700 flex flex-col gap-4 hidden">
             <h3 class="font-semibold text-gray-400 uppercase text-xs tracking-wider">Customization Tools</h3>
-            
-            <!-- Tool: Add Text -->
-            <button id="add-text-btn" class="w-full bg-gray-700 hover:bg-gray-600 text-left py-2 px-3 rounded flex items-center gap-2 transition">
-                <span>🔤</span> Add Custom Text
-            </button>
-
-            <!-- Tool: Add Shapes -->
-            <button id="add-rect-btn" class="w-full bg-gray-700 hover:bg-gray-600 text-left py-2 px-3 rounded flex items-center gap-2 transition">
-                <span>⏹️</span> Add Colored Block
-            </button>
-
-            <!-- Tool: Canvas Custom Background Color -->
+            <button id="add-text-btn" class="w-full bg-gray-700 hover:bg-gray-600 text-left py-2 px-3 rounded flex items-center gap-2 transition"><span>🔤</span> Add Custom Text</button>
+            <button id="add-rect-btn" class="w-full bg-gray-700 hover:bg-gray-600 text-left py-2 px-3 rounded flex items-center gap-2 transition"><span>⏹️</span> Add Colored Block</button>
             <div class="flex flex-col gap-1 mt-2">
                 <label class="text-xs text-gray-400">Page Tint Color</label>
                 <input type="color" id="page-color" class="w-full h-10 bg-transparent cursor-pointer rounded" value="#ffffff">
             </div>
-
-            <!-- Page Navigation -->
             <div class="mt-auto border-t border-gray-700 pt-4 flex justify-between items-center">
                 <button id="prev-page" class="bg-gray-700 hover:bg-gray-600 p-2 rounded">◀️</button>
                 <span id="page-num" class="text-sm font-medium">Page 0 / 0</span>
                 <button id="next-page" class="bg-gray-700 hover:bg-gray-600 p-2 rounded">▶️</button>
             </div>
         </aside>
-
-        <!-- Center Stage (The Book Viewer & Canvas) -->
         <main class="flex-1 bg-gray-950 flex items-center justify-center p-6 overflow-auto relative">
-            <!-- Empty State Message -->
             <div id="upload-prompt" class="text-center">
                 <p class="text-gray-500 text-lg mb-2">No book loaded yet.</p>
                 <p class="text-indigo-400 text-sm">Upload a PDF at the top to start customizing your book!</p>
             </div>
-
-            <!-- Interactive Book Page Container -->
             <div id="canvas-container" class="relative shadow-2xl border border-gray-800 hidden bg-white">
                 <canvas id="book-canvas"></canvas>
             </div>
         </main>
     </div>
-
-    <!-- We will connect the logic file next -->
     <script src="script.js"></script>
 </body>
 </html>
